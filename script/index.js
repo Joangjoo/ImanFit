@@ -13,14 +13,17 @@ window.addEventListener("scroll", () => {
   const isInAboutPage = isScrolledIntoView(aboutPage);
   const isInContactPage = isScrolledIntoView(contactPage);
 
-  if (isInHelpPage && !isInAboutPage && !isInContactPage) {
+  const isMobileDevice = window.matchMedia(
+    "only screen and (max-width: 768px)"
+  ).matches;
+  if (isInHelpPage && !isInAboutPage && !isInContactPage && isMobileDevice) {
     navbarLogo.innerHTML = "Let's Help";
-  } else if (isInAboutPage && !isInContactPage) {
+  } else if (isInAboutPage && !isInContactPage && isMobileDevice) {
     navbarLogo.innerHTML = "About Us";
-  }else if (isInContactPage) {
-    navbarLogo.innerHTML = "Contact Us";
-  }else{
-    navbarLogo.innerHTML = "ImanFit"
+  } else if (isInContactPage && isMobileDevice) {
+    navbarLogo.innerHTML = "ImanFit";
+  } else {
+    navbarLogo.innerHTML = "ImanFit";
   }
 });
 
@@ -29,7 +32,6 @@ function isScrolledIntoView(e) {
   const elemBottom = rect.bottom;
   const elemTop = rect.top;
 
-  
   const isVisible = elemTop == 0 || elemBottom <= window.innerHeight;
   return isVisible;
 }
