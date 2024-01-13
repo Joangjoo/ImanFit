@@ -16,7 +16,6 @@ html {
 section {
   scroll-snap-align: start;
   scroll-snap-stop: normal;
-
 }
 
 main h1,
@@ -41,21 +40,12 @@ body::-webkit-scrollbar {
   margin-top: 1rem;
 }
 
-@media only screen and (min-width: 1539px) {
-  .kananimg img {
-    height: 30rem;
+@media only screen and (max-width: 768px) {
+  html {
+    scroll-snap-type: none;
   }
-  .tulisan {
-    margin: 8rem;
-  }
-  .tulisan .lorem {
-    font-size: 4rem;
-  }
-  .otak img {
-    height: 45rem;
-  }
-
-  .kirihelp img {
-    height: 52rem;
+  section {
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
   }
 }
